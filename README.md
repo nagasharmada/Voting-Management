@@ -1,0 +1,1 @@
+This system gives a unique feature where people in a community can vote.
