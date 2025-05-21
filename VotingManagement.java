@@ -135,6 +135,7 @@ public class VotingManagement extends JFrame implements ActionListener {
             candidatePanel.add(candidateRow); // Add to the main panel
         }
     }   
+    //here added something
     private void insertVote(String voterId, int candidateId) {
     String url = "jdbc:mysql://localhost:3306/Voting"; 
     String user = "root"; 
