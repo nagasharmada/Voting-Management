@@ -134,7 +134,40 @@ public class VotingManagement extends JFrame implements ActionListener {
 
             candidatePanel.add(candidateRow); // Add to the main panel
         }
+    }   
+    private void insertVote(String voterId, int candidateId) {
+    String url = "jdbc:mysql://localhost:3306/Voting"; 
+    String user = "root"; 
+    String password = "Mysql@2005"; 
+
+    try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        // Check if voter has already voted
+        String checkSql = "SELECT COUNT(*) FROM voty WHERE voter_id = ?";
+        try (PreparedStatement checkStmt = connection.prepareStatement(checkSql)) {
+            checkStmt.setString(1, voterId);
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                JOptionPane.showMessageDialog(this, "You have already voted!", "Duplicate Vote", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+
+        // Insert vote if not already voted
+        String sql = "INSERT INTO voty (voter_id, candidate_id) VALUES (?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, voterId);
+            preparedStatement.setInt(2, candidateId); 
+            int rowsAffected = preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Vote cast successfully! " + rowsAffected + " row(s) inserted.");
+        }
+
+        clearFields(); 
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error casting vote.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
