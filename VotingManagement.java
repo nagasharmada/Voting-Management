@@ -136,6 +136,7 @@ public class VotingManagement extends JFrame implements ActionListener {
         }
     }   
     //here added something
+    //this is a new function
     private void insertVote(String voterId, int candidateId) {
     String url = "jdbc:mysql://localhost:3306/Voting"; 
     String user = "root"; 
