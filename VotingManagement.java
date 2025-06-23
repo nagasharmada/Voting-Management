@@ -18,7 +18,7 @@ public class VotingManagement extends JFrame implements ActionListener {
     private JRadioButton[] candidateButtons;
     private ButtonGroup candidateGroup;
 
-    // Candidate data
+    // Candidate data - Names, Parties and Imagepaths
     private String[] candidateNames = {"Candidate 1", "Candidate 2", "Candidate 3", "Candidate 4", "Candidate 5","Candidate 6"};
     private String[] candidateParties = {"Party A", "Party B", "Party C", "Party D", "Party E","Party F"};
     private String[] candidateImagePaths = {
