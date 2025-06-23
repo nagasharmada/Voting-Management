@@ -17,7 +17,7 @@ A desktop-based Voting Management System built using **Java Swing** and **MySQL*
 
 ##  Tech Stack
 
-- **Java (Swing GUI)**
+- **Java (Swing GUI)** (User Interface)
 - **MySQL** (local database)
 - **JDBC** (Java Database Connectivity)
 
